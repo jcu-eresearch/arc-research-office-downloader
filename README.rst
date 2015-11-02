@@ -12,5 +12,7 @@ on the RMS site), select the report to run and enter your scheme round.  Press
 the download button, choose a location to save your CSV (Excel compatible) and
 that's it.  Any errors that occur will be show accordingly.
 
+This project requires Python 3.x and has been tested with 3.4.
+
 .. note:: This was built according to the API specifications at 2 November
    2015.  Any later changes may break how this application works.
