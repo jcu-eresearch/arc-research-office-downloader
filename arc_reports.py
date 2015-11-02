@@ -60,7 +60,7 @@ def unsuccessful_feedback(scheme_round, api_key, file_path):
     data = download_report('UnsuccessfulFeedback', scheme_round, api_key)
     writer = None
 
-    with open(file_path, 'w') as output:
+    with open(file_path, 'w', newline='') as output:
         for item in data:
             project = collections.OrderedDict()
             project['Project ID'] = item.get('projectId')
@@ -84,7 +84,7 @@ def unsuccessful_feedback(scheme_round, api_key, file_path):
 def ineligible_proposals(scheme_round, api_key, file_path):
     """
 
-    https://rms.arc.gov.au/RMS/Report/Home/ResearchOfficeAPI#Reports-Ineligible
+    See https://rms.arc.gov.au/RMS/Report/Home/ResearchOfficeAPI#Reports-Ineligible
     Example structure:
 
     {
@@ -100,7 +100,7 @@ def ineligible_proposals(scheme_round, api_key, file_path):
     data = download_report('IneligibleProposals', scheme_round, api_key)
     writer = None
 
-    with open(file_path, 'w') as output:
+    with open(file_path, 'w', newline='') as output:
         for item in data:
             project = collections.OrderedDict()
             project['Project ID'] = item.get('projectId')
@@ -124,7 +124,7 @@ def funding_details_for_successful_proposals(scheme_round,
                            api_key)
     writer = None
 
-    with open(file_path, 'w') as output:
+    with open(file_path, 'w', newline='') as output:
         for item in data:
             project = collections.OrderedDict()
             project['Project ID'] = item.get('projectId')
