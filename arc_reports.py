@@ -10,7 +10,7 @@ import requests
 
 
 API_URL = 'https://rms.arc.gov.au/RMS/Report/ResearchOfficeAPI/{report_name}/'
-API_KEY_FILENAME = '.rms-api-key'
+API_KEY_PATH = '~/.arc-rms-api-key'
 
 
 def download_report(report_name, scheme_round, api_key):
@@ -84,7 +84,7 @@ def unsuccessful_feedback(scheme_round, api_key, file_path):
 def ineligible_proposals(scheme_round, api_key, file_path):
     """
 
-    See https://rms.arc.gov.au/RMS/Report/Home/ResearchOfficeAPI#Reports-Ineligible
+    https://rms.arc.gov.au/RMS/Report/Home/ResearchOfficeAPI#Reports-Ineligible
     Example structure:
 
     {
@@ -173,7 +173,7 @@ REPORTS = (
 REPORTS_DICT = dict(REPORTS)
 
 
-if __name__ == '__main__':
+def main():
     root = tkinter.Tk()
     root.wm_title("ARC Research Management System (RMS)")
     root.minsize(400, 400)
@@ -198,8 +198,9 @@ if __name__ == '__main__':
     w.pack()
 
     api_key = tkinter.StringVar(root)
-    if os.path.exists(API_KEY_FILENAME):
-        with open(API_KEY_FILENAME, 'r') as api_key_file:
+    api_key_path = os.path.expanduser(API_KEY_PATH)
+    if os.path.exists(api_key_path):
+        with open(api_key_path, 'r') as api_key_file:
             key = api_key_file.read()
             if key:
                 api_key.set(key.strip())
@@ -239,13 +240,13 @@ if __name__ == '__main__':
                 message="We experienced an error:\n " + message)
 
     def save_api_key():
-        with open(API_KEY_FILENAME, 'w') as api_key_file:
+        with open(api_key_path, 'w') as api_key_file:
             key = api_key.get()
             if key:
                 api_key_file.write(key.strip())
             messagebox.showinfo(
                 title="Done!",
-                message="Key saved to file %s" % API_KEY_FILENAME)
+                message="Key saved to file %s" % api_key_path)
 
     start = tkinter.Button(root, text='Download and export')
     start['command'] = lambda: download_export()
@@ -260,3 +261,6 @@ if __name__ == '__main__':
     quit.pack()
 
     root.mainloop()
+
+if __name__ == '__main__':
+    main()
