@@ -12,7 +12,46 @@ on the RMS site), select the report to run and enter your scheme round.  Press
 the download button, choose a location to save your CSV (Excel compatible) and
 that's it.  Any errors that occur will be show accordingly.
 
-This project requires Python 3.x and has been tested with 3.4.
 
 .. note:: This was built according to the API specifications at 2 November
    2015.  Any later changes may break how this application works.
+
+
+Use
+---
+
+Downloads are available on the `Wiki
+<https://github.com/jcu-eresearch/arc-research-office-downloader/wiki>`_.
+Only limited builds are available.
+
+
+Building
+--------
+
+This build process (using PyInstaller) works on all platforms.  Building the
+project requires Python 3.x and has been tested with 3.4 and 3.5.  Once built,
+the project is self-contained.
+
+#. Install `Python 3.x <https://python.org>`_ and `setuptools
+   <https://pypi.python.org/pypi/setuptools>`_.
+
+#. Clone this repo using Git::
+
+       git clone https://github.com/jcu-eresearch/arc-research-office-downloader.git
+
+#. Open a terminal, ``cd`` to the repo directory and install the package and
+   dependencies::
+
+       cd arc-research-office-downloader
+       python install setup.py
+
+#. Build!
+
+   ::
+       pyinstaller --onefile --nowindowed arc_reports.py
+
+#. Use or distribute the single file within ``dist/`` -- Python is not
+   required.  On Windows, you'll be required to install the `Visual C++
+   Redistributable
+   <https://www.microsoft.com/en-us/download/details.aspx?id=48145>`_.
+
