@@ -62,7 +62,8 @@ setup(
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=[
-        'requests'
+        'requests',
+        'pyinstaller'
     ],
 
     # To provide executable scripts, use entry points in preference to the
