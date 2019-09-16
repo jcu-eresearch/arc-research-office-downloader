@@ -48,6 +48,7 @@ the project is self-contained.
 #. Build!
 
    ::
+   
        pyinstaller --onefile --nowindowed arc_reports.py
 
 #. Use or distribute the single file within ``dist/`` -- Python is not
